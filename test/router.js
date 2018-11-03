@@ -2,6 +2,7 @@
 
 const Router = require("../index.js");
 
+console.log("testing");
 // describe();
 
 let r = { // an o inputs cmd,info and returns false, or true or newcmd. maybe make this also support reasoning.?
@@ -64,8 +65,9 @@ router.add([], (cmd, info, next) => {
 
 let info = {pm: false, error: (err) => console.log(err)};
 
-router.handle("help me", info);
-router.handle("donthelp please", info);
+console.log("handling");
+router.handle("Help me", info);
+router.handle("DontHelp please", info);
 router.handle("help", info);
 router.handle("donthelp", info);
 router.handle("plshelp", info);
@@ -73,6 +75,7 @@ router.handle("whatifidonthelp", info);
 router.handle("more commands show my text", info);
 router.handle("more commands", info);
 router.handle("more commands hmm", info);
+console.log("doneing");
 
 /*
 

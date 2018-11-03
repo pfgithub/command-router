@@ -1,3 +1,10 @@
+function deleteFirstInsensitive(str, replace) {
+	if(str.toLowerCase().startsWith(replace.toLowerCase())) {
+		return str.substr(replace.length);
+	}
+	return false;
+}
+
 class Router {
 	constructor() {
 		this.handlers = [];
@@ -23,22 +30,22 @@ class Router {
 	// handles a certain command with the given info
 	handle(cmd, info, next = () => {}) {
 		// loop through each handler and call them
-		this.handleOne(cmd, info, next, 0);
+		this._handleOne(cmd, info, next, 0);
 	}
-	handleOne(cmd, info, nextParentHandler, thisIndex) {
+	_handleOne(cmd, info, nextParentHandler, thisIndex) {
 		// If we've tried all our handlers and none succeeded, go onto the next parent handler
 		if(thisIndex > this.handlers.length - 1) return nextParentHandler();
 		// Get the handler we will be trying to use
 		let ourHandler = this.handlers[thisIndex];
 		// get the function that will be called after our handleone
-		let next = () => this.handleOne(cmd, info, nextParentHandler, thisIndex + 1);
+		let next = () => this._handleOne(cmd, info, nextParentHandler, thisIndex + 1);
 		// check that we're on the right path to be run
 		cmd = cmd.trim();
 		// ensure we are on that path
 		// if not, run the nextThisHandler
-		if(!cmd.startsWith(ourHandler.path)) return next();
+		if(!cmd.toLowerCase().startsWith(ourHandler.path.toLowerCase())) return next();
 		// if we are, replace the cmd for our current handler if it gets run
-		let handlerCommand = cmd.replace(ourHandler.path, "").trim();
+		let handlerCommand = deleteFirstInsensitive(cmd, ourHandler.path).trim();
 		// Loop over the requirements, ensuring they all pass
 		// if one fails, it will call info.error which propegates way up the chain
 		// it will also return false so the every fails
