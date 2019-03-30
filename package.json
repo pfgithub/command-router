@@ -1,22 +1,33 @@
 {
   "name": "commandrouter",
   "version": "1.0.1",
-  "main": "index.js",
+  "main": "built/index.js",
+  "types": "built/index.d.ts",
   "repository": "https://github.com/pfgithub/command-router.git",
   "license": "MIT",
   "scripts": {
-    "pretest": "echo pretest",
+    "pretest": "tsc",
     "test": "nyc mocha",
     "posttest": "nyc report --reporter lcov",
-    "test-error": "mocha"
+    "test-error": "mocha",
+    "build": "tsc"
   },
+  "files": [
+    "/man",
+    "/built/index.js",
+    "/built/index.d.ts",
+    "/built/src"
+  ],
   "nyc": {
     "exclude": []
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
     "eslint": "^5.8.0",
     "mocha": "^5.2.0",
-    "nyc": "^11.8.0"
+    "nyc": "^11.8.0",
+    "typescript": "^3.4.1"
   },
   "dependencies": {
     "string-similarity": "^1.2.0"

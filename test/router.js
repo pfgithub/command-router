@@ -1,13 +1,13 @@
 /*global describe it*/
 
-const Router = require("../index.js");
+const Router = require("../built/index.js");
 
 console.log("testing");
 // describe();
 
-let r = { // an o inputs cmd,info and returns false, or true or newcmd. maybe make this also support reasoning.?
+const r = { // an o inputs cmd,info and returns false, or true or newcmd. maybe make this also support reasoning.?
 	pm: (expectedState) => (info) => {
-		if(info.pm == expectedState) return true; //eslint-disable-line eqeqeq
+		if(info.pm == expectedState) {return true;} //eslint-disable-line eqeqeq
 		return info.error(`This command ${expectedState ? "can only": "cannot"} be used in a PM to the bot`) || false; 
 	}
 };
@@ -33,7 +33,7 @@ but too bad I sit while programming
 
 // Let's Try!
 
-let router = new Router;
+const router = new Router;
 
 router.add([], (cmd, info, next) => {
 	console.log("Handling cmd, ", cmd);
@@ -48,7 +48,7 @@ router.add("donthelp", [r.pm(false)], (cmd, info) => {
 	console.log("ok I won't help you: ", cmd);
 });
 
-let subrouter = new Router;
+const subrouter = new Router;
 router.add("more commands", [], subrouter);
 
 subrouter.add("show", [], (cmd, info) => {
@@ -63,7 +63,7 @@ router.add([], (cmd, info, next) => {
 	console.log("Cmd not found, ", cmd);
 });
 
-let info = {pm: false, error: (err) => console.log(err)};
+const info = {pm: false, error: (err) => console.log(err)};
 
 console.log("handling");
 router.handle("Help me", info);
