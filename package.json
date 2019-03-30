@@ -1,6 +1,6 @@
 {
   "name": "commandrouter",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "main": "built/index.js",
   "types": "built/index.d.ts",
   "repository": "https://github.com/pfgithub/command-router.git",
