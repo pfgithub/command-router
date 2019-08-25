@@ -5,7 +5,7 @@ function deleteFirstInsensitive(str: string, replace: string) {
 	return str;
 }
 
-export = class Router<Info, Result> {
+export default class Router<Info, Result> {
 	handlers: Array<{path: string, requirements: ((info: Info) => boolean)[], handler: (cmd: string, info: Info, next: () => (Result | undefined)) => (Result | undefined)}>
 	constructor() {
 		this.handlers = [];
@@ -84,4 +84,4 @@ export = class Router<Info, Result> {
 		// local next becomes global if we run out of things to try
 		return ourHandler.handler(handlerCommand, info, next);
 	}
-};
+}

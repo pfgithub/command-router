@@ -1,11 +1,12 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function deleteFirstInsensitive(str, replace) {
     if (str.toLowerCase().startsWith(replace.toLowerCase())) {
         return str.substr(replace.length);
     }
     return str;
 }
-module.exports = class Router {
+class Router {
     constructor() {
         this.handlers = [];
     }
@@ -73,4 +74,5 @@ module.exports = class Router {
         // local next becomes global if we run out of things to try
         return ourHandler.handler(handlerCommand, info, next);
     }
-};
+}
+exports.default = Router;
