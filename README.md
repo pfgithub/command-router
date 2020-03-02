@@ -1,4 +1,7 @@
 #  Command Router
+(useless and no longer maintained)
+
+## old description
 It's a router that routes commands
 
 ```javascript
@@ -17,7 +20,4 @@ router.handle("help me please", {error: err  => console.log(err)})
 |useful            |❌|✔️|
 |easy to use       |❌|✔️|
 |updated frequently|❌|✔️|
-|does what I want  |✔️|❓|
-
-### Alternatives
-I don't know any that do what I want, that's why I made this
+|does what I want  |❌|❌|
